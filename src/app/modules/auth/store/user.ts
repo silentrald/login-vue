@@ -1,10 +1,10 @@
-import { defineStore, type StoreDefinition } from "pinia";
+import { defineStore } from "pinia";
 import { useCookies } from "vue3-cookies";
+import makeUser from "../entity";
 
-import type { Store } from "pinia";
+import type { StoreDefinition } from "pinia";
 import type { UserEntity } from "../entity/types";
 import type { AuthApi } from "../repo/types";
-import makeUser from "../entity";
 
 export interface AuthState {
   user: UserEntity | undefined;
@@ -31,7 +31,7 @@ export type AuthStore = StoreDefinition<
 >;
 
 const delay = (ms: number) => {
-  return new Promise((resolve, _reject) => {
+  return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
 };

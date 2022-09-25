@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: basis33;
+  src: url('./fonts/basis33.ttf');
+}
+
+* {
+  font-family: basis33;
+}
+

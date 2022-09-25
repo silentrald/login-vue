@@ -4,4 +4,3 @@ import makeUseAuthStore from "./user";
 const useAuthStore = makeUseAuthStore(authApi);
 
 export default useAuthStore;
-

@@ -1,10 +1,40 @@
 <template>
-  <vee-form @submit="login" :validation-schema="loginSchema">
-    <vee-field v-model="username" name="username" type="text" />
+  <vee-form
+    id="auth-login-form"
+    @submit="login"
+    :validation-schema="loginSchema"
+    v-slot="{ errors }"
+  >
+    <h1 id="auth-login-header">Some Website Name</h1>
 
-    <vee-field v-model="password" name="password" type="password" />
+    <span v-if="Object.keys(errors).length || failed" class="error-text">
+      Auth Failed
+    </span>
 
-    <button>Submit</button>
+    <div id="auth-login-container">
+      <vee-field
+        v-model="username"
+        class="pixel-input"
+        name="username"
+        type="text"
+        placeholder="Username"
+        :validateOnBlur="false"
+        :validateOnChange="false"
+        :validateOnInput="false"
+      />
+      <vee-field
+        v-model="password"
+        class="pixel-input"
+        name="password"
+        type="password"
+        placeholder="Password"
+        :validateOnBlur="false"
+        :validateOnChange="false"
+        :validateOnInput="false"
+      />
+
+      <button id="auth-login-btn">Login</button>
+    </div>
   </vee-form>
 </template>
 
@@ -36,15 +66,46 @@ const loginSchema = {
   },
 };
 
-const username = ref("username");
-const password = ref("password");
+const username = ref("");
+const password = ref("");
+const failed = ref(false);
 
 const login = async () => {
   try {
+    failed.value = false;
     await authLogin.execute(username.value, password.value);
     router.push("/");
-  } catch (err) {
-    // Error
+  } catch (_err) {
+    failed.value = true;
   }
 };
 </script>
+
+<style lang="postcss" scoped>
+#auth-login-form {
+  @apply border-4 border-black
+    px-4 py-2;
+}
+
+#auth-login-header {
+  @apply text-6xl font-bold text-black mb-4;
+}
+
+#auth-login-container {
+  @apply flex flex-col gap-4 mt-4;
+}
+
+#auth-login-btn {
+  @apply text-4xl;
+}
+
+.error-text {
+  @apply text-4xl text-red italic;
+}
+
+.pixel-input {
+  @apply border-4 border-black
+    px-4 py-2
+    text-2xl text-black;
+}
+</style>

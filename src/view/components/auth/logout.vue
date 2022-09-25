@@ -1,5 +1,5 @@
 <template>
-  <button @click="logout">Logout</button>
+  <button id="logout-btn" @click="logout">Logout</button>
 </template>
 
 <script lang="ts" setup>
@@ -15,3 +15,9 @@ const logout = async () => {
   }
 };
 </script>
+
+<style lang="postcss" scoped>
+#logout-btn {
+  @apply text-4xl;
+}
+</style>

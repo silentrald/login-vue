@@ -4,19 +4,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        black: '#333',
-        green: '#3cb043',
+        black: "#333",
+        green: "#3cb043",
+        red: "#ff0033",
 
         light: {
-          green: '#3ded97',
+          green: "#3ded97",
         },
 
         dark: {
-          green: '#234f1e',
+          green: "#234f1e",
         },
       },
       fontFamily: {
-        primary: [ 'basis33', 'sans-serif', ],
+        primary: ["basis33", "sans-serif"],
       },
     },
   },
