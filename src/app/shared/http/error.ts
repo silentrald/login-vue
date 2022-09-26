@@ -9,7 +9,7 @@ interface HttpErrorConfig {
 export class HttpError extends Error {
   private status: HttpStatusCode;
   private statusNumber: number;
-  private errors: string[];
+  private errors: string[] | string;
 
   constructor(config: HttpErrorConfig) {
     super(config.message);
@@ -33,7 +33,7 @@ export class HttpError extends Error {
     return this.statusNumber > 499 && this.statusNumber < 600;
   }
 
-  public getErrors(): string[] {
+  public getErrors(): string[] | string {
     return this.errors;
   }
 }

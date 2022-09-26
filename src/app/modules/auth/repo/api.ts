@@ -37,9 +37,15 @@ const makeAuthApi = (service: HttpService) => {
       return makeUser(res.body as User);
     },
 
-    // register: () => {
-
-    // },
+    register: async (username, password) => {
+      const res = await service.post("/auth/register", {
+        body: {
+          username,
+          password,
+        },
+      });
+      return res.body;
+    },
   } as AuthApi);
 };
 

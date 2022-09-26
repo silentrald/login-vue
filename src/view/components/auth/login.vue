@@ -28,21 +28,25 @@
         name="password"
         type="password"
         placeholder="Password"
-        :validateOnBlur="false"
-        :validateOnChange="false"
-        :validateOnInput="false"
+        :validate-on-blur="false"
+        :validate-on-change="false"
+        :validate-on-input="false"
       />
 
-      <button id="auth-login-btn">Login</button>
+      <button id="login-btn">Login</button>
+
+      <router-link to="/register">Register</router-link>
     </div>
   </vee-form>
 </template>
 
 <script lang="ts" setup>
-import { authLogin } from "@/app/modules/auth/use-case";
-import router from "@/view/router";
 import { Form as VeeForm, Field as VeeField } from "vee-validate";
 import { ref } from "vue";
+import { RouterLink } from "vue-router";
+
+import { authLogin } from "@/app/modules/auth/use-case";
+import router from "@/view/router";
 
 const loginSchema = {
   username(value: string) {
@@ -95,7 +99,7 @@ const login = async () => {
   @apply flex flex-col gap-4 mt-4;
 }
 
-#auth-login-btn {
+#login-btn {
   @apply text-4xl;
 }
 

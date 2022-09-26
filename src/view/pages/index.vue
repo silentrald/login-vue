@@ -1,5 +1,5 @@
 <template>
-  <div class="text-xl">
+  <div class="index-page">
     <auth-user-card />
     <auth-logout />
   </div>

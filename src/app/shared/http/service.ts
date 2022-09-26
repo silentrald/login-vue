@@ -19,8 +19,7 @@ const handleError = (err: AxiosError) => {
     throw new HttpError({
       status: err.response.status,
       message: err.message,
-      errors: [],
-      // errors: err.response.data || [],
+      errors: (err.response.data as any) || "",
     });
   }
 
